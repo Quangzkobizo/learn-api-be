@@ -56,6 +56,7 @@ class AuthController extends Controller
         ]);
 
         $token = Auth::login($user);
+
         return response()->json([
             'status' => 'success',
             'message' => 'User created successfully',
@@ -63,7 +64,7 @@ class AuthController extends Controller
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
-            ]
+            ],
         ]);
     }
 
