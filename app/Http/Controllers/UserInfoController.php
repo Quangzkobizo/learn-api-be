@@ -74,58 +74,16 @@ class UserInfoController extends Controller
         ], 200);
     }
 
-
-    public function store1(Request $request)
-    {
-        //$user = User::find($request->user_id);
-        //$user_auth = Auth::user();
-        // $user = User::find( Auth::user()->id );
-
-        // if ($user->userInfo() != null) {
-        //     $user->userInfo()->delete();
-        // }
-
-        // $newUserInfo = UserInfo::create([
-        //     'user_id' => $request->user_id,
-        //     'full_name' => $request->full_name,
-        //     'date_of_birth' => $request->date_of_birth,
-        //     'gender' => $request->gender,
-        //     'bio' => $request->bio,
-        // ]);
-
-        return response()->json([
-            'status' => 'UserInfo created',
-            'info' => $request,
-            //'user' => $user,
-        ]);
-    }
-
-    public function show($user_id)
-    {
-        $info = UserInfo::where('user_id', $user_id)->first();
-
-        if ($info != null) {
-            return response()->json([
-                'status' => 'success',
-                'info' => $info,
-
-            ]);
-        } else {
-            return response()->json([
-                'status' => 'no info',
-            ]);
-        }
-    }
-
     public function me()
-    {
-        $user_auth = Auth::user();
-        $user = User::find($user_auth->id); //because I cannot get info by Auth::
+{
+    $user = Auth::user(); // Lấy thông tin user thông qua Auth::user()
+    $userInfo = $user->userInfo; // Lấy thông tin userInfo của user
 
-        return response()->json([
-            'status' => 'success',
-            'user' => $user,
-            'info' => $user->userInfo(),
-        ]);
-    }
+    return response()->json([
+        'status' => 'success',
+        'user' => $user,
+        //'info' => $userInfo
+    ]);
+}
+
 }
