@@ -18,6 +18,7 @@ class UserInfo extends Model
         'date_of_birth',
         'gender',
         'bio',
+        'avatar',
 
     ];
     public function user(): BelongsTo

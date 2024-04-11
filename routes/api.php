@@ -24,7 +24,9 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('user')->group(function () {
+    Route::post('upload-avatar', [UserInfoController::class, 'uploadAvatar']);
     Route::post('{id}', [UserInfoController::class, 'create']);
+    Route::get('/get-avatar/{id}', [UserInfoController::class, 'getAvatar']);
     Route::get('{user_id}/show', [UserInfoController::class, 'show']);
     Route::get('me', [UserInfoController::class, 'me']);
     Route::put('{id}',[UserInfoController::class,'update']);

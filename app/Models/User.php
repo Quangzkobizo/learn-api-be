@@ -66,4 +66,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(UserInfo::class,'user_id','id');
     }
 
+    public function getAvatar(){
+        return $this->userInfo->avatar;
+    }
+
 }

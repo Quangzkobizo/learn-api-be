@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('date_of_birth');
             $table->string('gender');
             $table->string('bio');
+            $table->string('avatar');
 
             $table->timestamps();
         });
